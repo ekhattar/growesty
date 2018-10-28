@@ -90,13 +90,28 @@
   <script src="js/bootstrap.min.js"></script>
   <script>
     $("#required-text").css("visibility", "hidden");
+
+    function checkInputs() {
+      var isValid = true;
+      if ($("input[type=email]").val() === '') {
+        isValid = false;
+      };
+      if ($("#gdpr_18343").prop("checked") === false) {
+        isValid = false;
+      }
+      return isValid;
+    };
+
     document.addEventListener('submit', function (event) {
       if (!event.target.classList.contains('validate')) return;
-      event.preventDefault();
-      $("#required-text").css("visibility", "visible");
-      $("#mce-EMAIL").css("box-shadow", "0 0 .05rem .2rem red");
-      $("#gdpr_18343").css("box-shadow", "0 0 .05rem .1rem red");
+      if (checkInputs() === false) {
+        event.preventDefault();
+        $("#required-text").css("visibility", "visible");
+        $("#mce-EMAIL").css("box-shadow", "0 0 .05rem .2rem red");
+        $("#gdpr_18343").css("box-shadow", "0 0 .05rem .1rem red");
+      };
     }, false);
+
   </script>
 </body>
 
