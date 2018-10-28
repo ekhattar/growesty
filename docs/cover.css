@@ -10,15 +10,20 @@ a:hover {
 }
 
 /* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
+.btn-secondary {
   color: #333;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: #fff;
   border: .05rem solid #fff;
 }
 
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color:#fff;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #333;
+  border: .05rem solid #fff;
+}
 
 /*
  * Base structure
@@ -108,7 +113,42 @@ body {
 /*
  * Additional elements
  */
- hr {
+hr {
   border-color: white;
   width: 50%;
- }
+}
+
+/*
+* Mailchimp form
+*/
+#mc_embed_signup{
+  /* background:#fff; */
+  clear:left;
+  /* font:14px Helvetica,Arial,sans-serif; */
+}
+
+#mc-embedded-subscribe-form input[type=email]{
+  display: inline;
+  width: 100%;
+  font-size: 150%;
+}
+
+#mc-embedded-subscribe-form input[type=checkbox]{
+  display: inline;
+  width: auto;
+  margin-right: 10px;
+}
+
+#mergeRow-gdpr {
+  margin-top: 20px;
+}
+
+#mergeRow-gdpr fieldset label {
+  font-weight: normal;
+}
+
+#mc-embedded-subscribe-form .mc_fieldset{
+  border:none;
+  min-height: 0px;
+  padding-bottom:0px;
+}
