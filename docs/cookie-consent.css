@@ -1,19 +1,20 @@
 .cc-revoke.cc-bottom {
-    bottom: 15%;
+    bottom: 0%;
     left: 0em;
     border-top-left-radius: .5em;
     border-top-right-radius: .5em;
-    -webkit-transform: translateY(-100%) rotate(90deg); /* Safari */
-    -moz-transform: translateY(-100%) rotate(90deg); /* Firefox 3.6 Firefox 4 */
-    /*-moz-transform-origin: right top; */
-    -ms-transform: translateY(-100%) rotate(90deg); /* IE9 */
-    -o-transform: translateY(-100%) rotate(90deg); /* Opera */
-    transform: translateY(-100%) rotate(90deg); /* W3C */  
+    font-size: 8pt;
+    /* -webkit-transform: translateY(-100%) rotate(90deg);
+    -moz-transform: translateY(-100%) rotate(90deg);
+    -moz-transform-origin: right top;
+    -ms-transform: translateY(-100%) rotate(90deg);
+    -o-transform: translateY(-100%) rotate(90deg); 
+    transform: translateY(-100%) rotate(90deg); 
     -webkit-transform-origin: left bottom;
     -moz-transform-origin: left bottom;
     -ms-transform-origin: left bottom;
     -o-transform-origin: left bottom;
-    transform-origin: left bottom;
+    transform-origin: left bottom; */
 };
 
 .cc-revoke, .cc-window {
@@ -22,7 +23,7 @@
     /* overflow: hidden; */
     box-sizing: border-box;
     font-family: Helvetica,Calibri,Arial,sans-serif;
-    font-size: 20%;
+    font-size: 10pt;
     /* line-height: 0.5em; */
     display: -ms-flexbox;
     display: flex;
