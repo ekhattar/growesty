@@ -4,18 +4,18 @@
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42941509-3"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42941509-3"></script>
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+  <link href="cookie-consent.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
   <script>
-      var cookiesEnabled;
+    var cookiesEnabled = true;
     function enableCookies() {
-      cookiesEnabled = true;
+      window.cookiesEnabled = true;
       window['ga-disable-UA-42941509-3'] = false;
     }
 
     function disableCookies() {
-      cookiesEnabled = false;
+      window.cookiesEnabled = false;
       window['ga-disable-UA-42941509-3'] = true;
     }
 
