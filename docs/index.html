@@ -7,15 +7,13 @@
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
   <script>
-    var cookiesEnabled = true;
+    var cookiesEnabled;
     function enableCookies() {
-      console.log("[INFO] Cookies are enabled.");
       cookiesEnabled = true;
       window['ga-disable-UA-42941509-3'] = false;
     }
 
     function disableCookies() {
-      console.log("[INFO] Cookies are DISabled.");
       cookiesEnabled = false;
       window['ga-disable-UA-42941509-3'] = true;
     }
@@ -69,8 +67,11 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     if (cookiesEnabled) {
+      console.log("[INFO] Cookies are enabled.");
       gtag('js', new Date());
       gtag('config', 'UA-42941509-3');
+    } else {
+      console.log("[INFO] Cookies are DISabled.");
     }
   </script>
   <!-- Required meta tags -->
