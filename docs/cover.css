@@ -102,7 +102,6 @@ body {
 @media (max-width: 48em) {
   .lead {
     font-size: 100%;
-    text-align: left;
   }
 }
 
