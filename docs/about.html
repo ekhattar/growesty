@@ -4,12 +4,74 @@
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42941509-3"></script>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
   <script>
+    var cookiesEnabled = true;
+    function enableCookies() {
+      console.log("[INFO] Cookies are enabled.");
+      cookiesEnabled = true;
+      window['ga-disable-UA-42941509-3'] = false;
+    }
+
+    function disableCookies() {
+      console.log("[INFO] Cookies are DISabled.");
+      cookiesEnabled = false;
+      window['ga-disable-UA-42941509-3'] = true;
+    }
+
+    window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#000"
+        },
+        "button": {
+          "background": "transparent",
+          "text": "#f1d600",
+          "border": "#f1d600"
+        }
+      },
+      "type": "opt-out",
+      onInitialise: function (status) {
+        var type = this.options.type;
+        var didConsent = this.hasConsented();
+        if (type == 'opt-in' && didConsent) {
+          enableCookies()
+        }
+        if (type == 'opt-out' && !didConsent) {
+          disableCookies()
+        }
+      },
+
+      onStatusChange: function(status, chosenBefore) {
+        var type = this.options.type;
+        var didConsent = this.hasConsented();
+        if (type == 'opt-in' && didConsent) {
+          enableCookies()
+        }
+        if (type == 'opt-out' && !didConsent) {
+          disableCookies()
+        }
+      },
+
+      onRevokeChoice: function() {
+        var type = this.options.type;
+        if (type == 'opt-in') {
+          disableCookies()
+        }
+        if (type == 'opt-out') {
+          enableCookies()
+        }
+      },
+    })});
+
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-42941509-3');
+    if (cookiesEnabled) {
+      gtag('js', new Date());
+      gtag('config', 'UA-42941509-3');
+    }
   </script>
 
   <!-- Required meta tags -->
