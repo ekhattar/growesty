@@ -101,6 +101,7 @@
         console.log("[DEBUG] Current value of cookiesEnabled: " + cookiesEnabled);
         window['ga-disable-AW-785523760'] = false;
         console.log("[Adwords] Cookies are enabled, reporting conversions.");
+        gtag('config', 'AW-785523760');
         gtag('event', 'conversion', {
           'send_to': 'AW-785523760/VEsGCOKql4wBELDIyPYC',
           'event_callback': callback
