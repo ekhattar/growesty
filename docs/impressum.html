@@ -98,17 +98,13 @@
             window.location = url;
           }
         };
-        if (cookiesEnabled && cookiesEnabled == true){
-          window['ga-disable-AW-785523760'] = false;
-          console.log("[Adwords] Cookies are enabled, reporting conversions.");
-          gtag('event', 'conversion', {
-            'send_to': 'AW-785523760/VEsGCOKql4wBELDIyPYC',
-            'event_callback': callback
-          });
-        } else {
-          window['ga-disable-AW-785523760'] = true;
-          console.log("[Adwords] Cookies are disabled, not reporting conversions.");
-        };
+        console.log("[DEBUG] Current value of cookiesEnabled: " + cookiesEnabled);
+        window['ga-disable-AW-785523760'] = false;
+        console.log("[Adwords] Cookies are enabled, reporting conversions.");
+        gtag('event', 'conversion', {
+          'send_to': 'AW-785523760/VEsGCOKql4wBELDIyPYC',
+          'event_callback': callback
+        });
         return false;
       };
   
