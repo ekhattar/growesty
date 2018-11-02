@@ -15,6 +15,7 @@
         cookiesEnabled = true;
         window['ga-disable-UA-42941509-3'] = false;
         window['ga-disable-AW-785523760'] = false;
+        window['ga-disable-UA-128531501-1'] = false;
         start_google_analytics(true);
       }
   
@@ -23,6 +24,7 @@
         cookiesEnabled = false;
         window['ga-disable-UA-42941509-3'] = true;
         window['ga-disable-AW-785523760'] = true;
+        window['ga-disable-UA-128531501-1'] = true;
         start_google_analytics(false);
       }
   
@@ -112,6 +114,7 @@
           gtag('js', new Date());
           gtag('config', 'UA-42941509-3');
           gtag('config', 'AW-785523760');
+          gtag('config', 'UA-128531501-1');
         } else {
           console.log("[Analytics] Cookies are disabled, not reporting.");
         };

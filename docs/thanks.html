@@ -8,115 +8,118 @@
   <link href="cookie-consent.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
   <script>
-    var cookiesEnabled;
-    
-    function enableCookies() {
-      console.log("[INFO] Enabling cookies...");
-      cookiesEnabled = true;
-      window['ga-disable-UA-42941509-3'] = false;
-      window['ga-disable-AW-785523760'] = false;
-      start_google_analytics(true);
-    }
-
-    function disableCookies() {
-      console.log("[INFO] Disabling cookies...");
-      cookiesEnabled = false;
-      window['ga-disable-UA-42941509-3'] = true;
-      window['ga-disable-AW-785523760'] = true;
-      start_google_analytics(false);
-    }
-
-    window.addEventListener("load", function(){
-      // start_google_analytics();
-      window.cookieconsent.initialise({
-        "palette": {
-          "popup": {
-            "background": "#000"
+      var cookiesEnabled;
+      
+      function enableCookies() {
+        console.log("[INFO] Enabling cookies...");
+        cookiesEnabled = true;
+        window['ga-disable-UA-42941509-3'] = false;
+        window['ga-disable-AW-785523760'] = false;
+        window['ga-disable-UA-128531501-1'] = false;
+        start_google_analytics(true);
+      }
+  
+      function disableCookies() {
+        console.log("[INFO] Disabling cookies...");
+        cookiesEnabled = false;
+        window['ga-disable-UA-42941509-3'] = true;
+        window['ga-disable-AW-785523760'] = true;
+        window['ga-disable-UA-128531501-1'] = true;
+        start_google_analytics(false);
+      }
+  
+      window.addEventListener("load", function(){
+        // start_google_analytics();
+        window.cookieconsent.initialise({
+          "palette": {
+            "popup": {
+              "background": "#000"
+            },
+            "button": {
+              "background": "transparent",
+              "text": "#f1d600",
+              "border": "#f1d600"
+            }
           },
-          "button": {
-            "background": "transparent",
-            "text": "#f1d600",
-            "border": "#f1d600"
+          "type": "opt-out",
+          onInitialise: function (status) {
+            console.log("[Cookie Consent] Initialized!");
+            var type = this.options.type;
+            var didConsent = this.hasConsented();
+            if (type == 'opt-in' && didConsent) {
+              console.log("[Cookie Consent] User has consented.");
+              enableCookies();
+            }
+            if (type == 'opt-out' && !didConsent) {
+              console.log("[Cookie Consent] User has opted out.");
+              disableCookies();
+            }
+          },
+  
+          onStatusChange: function(status, chosenBefore) {
+            console.log("[Cookie Consent] Detected status change...");
+            var type = this.options.type;
+            var didConsent = this.hasConsented();
+            if (type == 'opt-in' && didConsent) {
+              console.log("[Cookie Consent] User has consented.");
+              enableCookies();
+            }
+            if (type == 'opt-out' && !didConsent) {
+              console.log("[Cookie Consent] User has opted out.");
+              disableCookies();
+              console.log("[INFO] Page will reload to apply changes.");
+              window.location.reload();
+            }
+          },
+  
+          onRevokeChoice: function() {
+            var type = this.options.type;
+            if (type == 'opt-in') {
+              console.log("[Cookie Consent] User has opted out; disabling.");
+              disableCookies();
+              console.log("[INFO] Page will reload to apply changes.");
+              window.location.reload();
+            }
+            if (type == 'opt-out') {
+              console.log("[Cookie Consent] User has opted in; enabling.");
+              enableCookies();
+            }
+          },
+        })
+      });
+  
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
           }
-        },
-        "type": "opt-out",
-        onInitialise: function (status) {
-          console.log("[Cookie Consent] Initialized!");
-          var type = this.options.type;
-          var didConsent = this.hasConsented();
-          if (type == 'opt-in' && didConsent) {
-            console.log("[Cookie Consent] User has consented.");
-            enableCookies();
-          }
-          if (type == 'opt-out' && !didConsent) {
-            console.log("[Cookie Consent] User has opted out.");
-            disableCookies();
-          }
-        },
-
-        onStatusChange: function(status, chosenBefore) {
-          console.log("[Cookie Consent] Detected status change...");
-          var type = this.options.type;
-          var didConsent = this.hasConsented();
-          if (type == 'opt-in' && didConsent) {
-            console.log("[Cookie Consent] User has consented.");
-            enableCookies();
-          }
-          if (type == 'opt-out' && !didConsent) {
-            console.log("[Cookie Consent] User has opted out.");
-            disableCookies();
-            console.log("[INFO] Page will reload to apply changes.");
-            window.location.reload();
-          }
-        },
-
-        onRevokeChoice: function() {
-          var type = this.options.type;
-          if (type == 'opt-in') {
-            console.log("[Cookie Consent] User has opted out; disabling.");
-            disableCookies();
-            console.log("[INFO] Page will reload to apply changes.");
-            window.location.reload();
-          }
-          if (type == 'opt-out') {
-            console.log("[Cookie Consent] User has opted in; enabling.");
-            enableCookies();
-          }
-        },
-      })
-    });
-
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
+        };
+        if (cookiedEnabled && cookiesEnabled == true){
+          console.log("[Adwords] Cookies are enabled, reporting conversions.");
+          gtag('event', 'conversion', {
+            'send_to': 'AW-785523760/VEsGCOKql4wBELDIyPYC',
+            'event_callback': callback
+          });
+        } else {
+          console.log("[Adwords] Cookies are disabled, not reporting conversions.");
+        };
+        return false;
       };
-      if (cookiedEnabled && cookiesEnabled == true){
-        console.log("[Adwords] Cookies are enabled, reporting conversions.");
-        gtag('event', 'conversion', {
-          'send_to': 'AW-785523760/VEsGCOKql4wBELDIyPYC',
-          'event_callback': callback
-        });
-      } else {
-        console.log("[Adwords] Cookies are disabled, not reporting conversions.");
+  
+      function start_google_analytics(consentStatus = false){
+        if (consentStatus == true){
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          console.log("[Analytics] Cookies are enabled, reporting.");
+          gtag('js', new Date());
+          gtag('config', 'UA-42941509-3');
+          gtag('config', 'AW-785523760');
+          gtag('config', 'UA-128531501-1');
+        } else {
+          console.log("[Analytics] Cookies are disabled, not reporting.");
+        };
       };
-      return false;
-    };
-
-    function start_google_analytics(consentStatus = false){
-      if (consentStatus == true){
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        console.log("[Analytics] Cookies are enabled, reporting.");
-        gtag('js', new Date());
-        gtag('config', 'UA-42941509-3');
-        gtag('config', 'AW-785523760');
-      } else {
-        console.log("[Analytics] Cookies are disabled, not reporting.");
-      };
-    };
-  </script>
+    </script>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
