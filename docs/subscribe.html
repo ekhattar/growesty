@@ -46,6 +46,7 @@
             console.log("[Cookie Consent] Initialized!");
             var type = this.options.type;
             var didConsent = this.hasConsented();
+            console.log("[Cookie Consent] Current cookie status: " + didConsent);
             if (type == 'opt-in' && didConsent) {
               console.log("[Cookie Consent] User has consented.");
               enableCookies();
@@ -53,7 +54,7 @@
             if (type == 'opt-out' && !didConsent) {
               console.log("[Cookie Consent] User has opted out.");
               disableCookies();
-            }
+            };
           },
   
           onStatusChange: function(status, chosenBefore) {
@@ -70,6 +71,7 @@
               console.log("[INFO] Page will reload to apply changes.");
               window.location.reload();
             }
+            window.location.reload();
           },
   
           onRevokeChoice: function() {
@@ -84,6 +86,7 @@
               console.log("[Cookie Consent] User has opted in; enabling.");
               enableCookies();
             }
+            window.location.reload();
           },
         })
       });
