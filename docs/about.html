@@ -28,7 +28,7 @@
       }
   
       window.addEventListener("load", function(){
-        start_google_analytics(false);
+        start_google_analytics(true);
         window.cookieconsent.initialise({
           "palette": {
             "popup": {
@@ -109,6 +109,7 @@
       };
   
       function start_google_analytics(consentStatus = false){
+        console.log("[INFO] Global variable set to: " + window['ga-disable-UA-128531501-1']);
         if (consentStatus == true){
           window['ga-disable-UA-128531501-1'] = false;
           window.dataLayer = window.dataLayer || [];
