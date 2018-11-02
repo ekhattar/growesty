@@ -26,6 +26,10 @@
         window['ga-disable-UA-128531501-1'] = true;
         start_google_analytics(false);
       }
+
+      function reloadPage() {
+        history.go(0);
+      }
   
       window.addEventListener("load", function(){
         start_google_analytics(true);
@@ -69,7 +73,7 @@
               disableCookies();
             }
             console.log("[INFO] Page will reload to apply changes.");
-            window.location.reload();
+            reloadPage();
           },
   
           onRevokeChoice: function() {
@@ -83,7 +87,7 @@
               enableCookies();
             }
             console.log("[INFO] Page will reload to apply changes.");
-            window.location.reload();
+            reloadPage();
           },
         })
       });
