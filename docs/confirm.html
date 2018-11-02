@@ -13,7 +13,7 @@
       function enableCookies() {
         console.log("[INFO] Enabling cookies...");
         cookiesEnabled = true;
-        window['ga-disable-UA-42941509-3'] = false;
+        //window['ga-disable-UA-42941509-3'] = false;
         window['ga-disable-AW-785523760'] = false;
         window['ga-disable-UA-128531501-1'] = false;
         start_google_analytics(true);
@@ -22,7 +22,7 @@
       function disableCookies() {
         console.log("[INFO] Disabling cookies...");
         cookiesEnabled = false;
-        window['ga-disable-UA-42941509-3'] = true;
+        //window['ga-disable-UA-42941509-3'] = true;
         window['ga-disable-AW-785523760'] = true;
         window['ga-disable-UA-128531501-1'] = true;
         start_google_analytics(false);
@@ -112,7 +112,7 @@
           function gtag(){dataLayer.push(arguments);}
           console.log("[Analytics] Cookies are enabled, reporting.");
           gtag('js', new Date());
-          gtag('config', 'UA-42941509-3');
+          //gtag('config', 'UA-42941509-3');
           gtag('config', 'AW-785523760');
           gtag('config', 'UA-128531501-1');
         } else {
