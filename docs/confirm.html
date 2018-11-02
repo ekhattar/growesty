@@ -107,13 +107,14 @@
         });
         return false;
       };
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
   
       function start_google_analytics(consentStatus = false){
         console.log("[INFO] Global variable set to: " + window['ga-disable-UA-128531501-1']);
         if (consentStatus == true){
           window['ga-disable-UA-128531501-1'] = false;
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
           console.log("[Analytics] Cookies are enabled, reporting.");
           gtag('js', new Date());
           gtag('config', 'AW-785523760');
