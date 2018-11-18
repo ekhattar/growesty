@@ -9,6 +9,17 @@ a:hover {
   color: #fff;
 }
 
+.masthead-brand, .nav-masthead  {
+  line-height: 40px;
+  padding: 0px;
+}
+
+.masthead-brand-logo {
+  height: 5vh;
+  padding: 2px;
+  width: auto;
+}
+
 /* Custom default button */
 .btn-secondary {
   color: #333;
